@@ -25,12 +25,19 @@ class CustomObject:
     def serialize(self, filename):
         """Prototype to serialize the specified file"""
 
-        with open(filename, "wb") as f:
-            pickle.dump(self, f)
+        try:
+            with open(filename, "wb") as f:
+                pickle.dump(self, f)
+            return True
+        except Exception:
+            return None
 
     @classmethod
     def deserialize(cls, filename):
         """Prototype to deserialize from the specified file"""
 
-        with open(filename, "rb") as f:
-            return pickle.load(f)
+        try:
+            with open(filename, "rb") as f:
+                return pickle.load(f)
+        except Exception:
+            return None 
