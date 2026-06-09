@@ -16,5 +16,7 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     query_rows = session.query(State).order_by(State.id).filter(
         State.id == 2).first()
+    query_rows.name = "New Mexico"
+    session.commit()
     print("{}: {}".format(query_rows.id, query_rows.name))
     session.close()
